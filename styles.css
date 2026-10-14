@@ -1,0 +1,85 @@
+:root {
+  --marine: #0F2A43;
+  --marine-hell: #1E3D5C;
+  --orange: #F59E0B;
+  --notfall: #B42318;
+  --text: #16212C;
+  --text-leise: #5B6772;
+  --hintergrund: #F5F7F9;
+  --flaeche: #FFFFFF;
+  --linie: #E2E7EC;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--hintergrund);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+a { color: var(--marine); }
+
+.huelle { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+
+/* Kopf */
+.kopf { background: var(--marine); color: #fff; }
+.kopf .huelle { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 18px; padding-bottom: 18px; }
+.marke { display: flex; align-items: center; gap: 12px; color: #fff; text-decoration: none; font-weight: 800; font-size: 19px; }
+.marke img { width: 40px; height: 40px; }
+.kopf nav a { color: #fff; text-decoration: none; font-weight: 600; font-size: 15px; }
+
+/* Startbereich */
+.start { background: var(--marine); color: #fff; padding: 48px 0 72px; }
+.start h1 { font-size: clamp(32px, 6vw, 52px); line-height: 1.12; margin: 0 0 20px; letter-spacing: -0.02em; }
+.start h1 span { color: var(--orange); }
+.start p { font-size: 19px; max-width: 620px; margin: 0 0 32px; color: #D6E0EA; }
+.knopf { display: inline-block; background: var(--orange); color: var(--marine); font-weight: 800; text-decoration: none; padding: 15px 26px; border-radius: 12px; }
+.knopf:hover { filter: brightness(1.05); }
+
+/* Abschnitte */
+section { padding: 64px 0; }
+h2 { font-size: clamp(26px, 4vw, 34px); line-height: 1.2; margin: 0 0 12px; letter-spacing: -0.01em; }
+.unterzeile { color: var(--text-leise); margin: 0 0 36px; max-width: 640px; }
+
+.raster { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.karte { background: var(--flaeche); border: 1px solid var(--linie); border-radius: 16px; padding: 24px; }
+.karte h3 { margin: 0 0 8px; font-size: 19px; }
+.karte p { margin: 0; color: var(--text-leise); }
+.nummer { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 10px; background: var(--marine); color: #fff; font-weight: 800; margin-bottom: 14px; }
+
+.liste { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; max-width: 680px; }
+.liste li { display: flex; gap: 14px; align-items: flex-start; }
+.liste li::before { content: ""; flex: none; width: 10px; height: 10px; margin-top: 9px; border-radius: 3px; background: var(--orange); }
+
+.hell { background: var(--flaeche); border-top: 1px solid var(--linie); border-bottom: 1px solid var(--linie); }
+
+.kontakt { text-align: center; }
+.kontakt .unterzeile { margin-left: auto; margin-right: auto; }
+.kontakt .knopf { background: var(--marine); color: #fff; }
+
+/* Rechtstexte */
+.rechtstext { padding-top: 48px; padding-bottom: 64px; max-width: 760px; }
+.rechtstext h1 { font-size: 34px; margin: 0 0 24px; }
+.rechtstext h2 { font-size: 21px; margin: 32px 0 8px; }
+.rechtstext p, .rechtstext li { color: var(--text); }
+
+/* Fuß */
+.fuss { background: var(--marine); color: #B9C7D4; font-size: 14px; }
+.fuss .huelle { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding-top: 24px; padding-bottom: 24px; }
+.fuss a { color: #fff; text-decoration: none; margin-left: 18px; }
+.fuss a:first-child { margin-left: 0; }
+
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .start { padding: 32px 0 56px; }
+  .start p { font-size: 17px; }
+  section { padding: 48px 0; }
+  .rechtstext h1 { font-size: 28px; }
+  .kopf nav { display: none; }
+}
