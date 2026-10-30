@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bross Automation – Telefon-Assistent für Handwerksbetriebe</title>
-  <meta name="description" content="Bross Automation richtet Handwerksbetrieben einen Telefon-Assistenten ein: Verpasste Anrufe werden automatisch zu sortierten Aufträgen, Notfälle werden sofort gemeldet.">
+  <title>Bross Automation – KI-Telefonassistentin für Handwerksbetriebe</title>
+  <meta name="description" content="Bross Automation richtet Handwerksbetrieben eine KI-Telefonassistentin ein: Sie nimmt ab, wenn niemand kann, fragt alles Wichtige ab und legt den Auftrag sortiert in die App. Notfälle werden sofort gemeldet.">
   <link rel="icon" href="logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -12,39 +12,148 @@
   <header class="kopf">
     <div class="huelle">
       <a class="marke" href="./"><img src="logo.svg" alt="">Bross Automation</a>
-      <nav><a href="#kontakt">Kontakt</a></nav>
+      <nav><a href="#varianten">Varianten</a><a href="#kontakt">Kontakt</a></nav>
     </div>
   </header>
 
   <main>
     <div class="start">
-      <div class="huelle">
-        <h1>Kein Anruf geht mehr verloren, <span>auch wenn Sie auf der Baustelle sind.</span></h1>
-        <p>Bross Automation richtet Handwerksbetrieben einen Telefon-Assistenten ein. Aus jeder Nachricht auf dem Anrufbeantworter wird automatisch ein übersichtlicher Auftrag mit Name, Rückrufnummer, Adresse und Anliegen. Notfälle werden sofort gemeldet.</p>
-        <a class="knopf" href="#kontakt">Unverbindlich anfragen</a>
+      <div class="huelle start-raster">
+        <div>
+          <p class="etikett">Neu: KI-Telefonassistentin</p>
+          <h1>Kein Anruf geht mehr verloren, <span>auch wenn Sie auf der Baustelle sind.</span></h1>
+          <p>Wenn Sie nicht rangehen können, nimmt Ihre digitale Assistentin ab: freundlich, rund um die Uhr, im echten Gespräch. Sie fragt Name, Adresse, Rückrufnummer und Anliegen ab und legt den Auftrag sortiert in Ihre App. Notfälle meldet sie sofort.</p>
+          <div class="knoepfe">
+            <a class="knopf" href="tel:+4976319054989">Jetzt testen: 07631 9054989</a>
+            <a class="knopf zweit" href="#kontakt">Unverbindlich anfragen</a>
+          </div>
+          <p class="klein">Rufen Sie an und spielen Sie einen Kundenanruf durch – am Beispiel unseres Musterbetriebs.</p>
+        </div>
+        <div class="buehne" aria-hidden="true">
+          <div class="blase" id="blase">Hallo! Ich nehme ab, wenn Sie gerade nicht können.</div>
+          <svg class="roboter" id="roboter" viewBox="0 0 240 300">
+            <ellipse class="schatten" cx="120" cy="288" rx="62" ry="8" fill="#000" opacity=".25"/>
+            <g class="koerper-gruppe">
+              <rect x="88" y="232" width="22" height="44" rx="9" fill="#1E3D5C"/>
+              <rect x="130" y="232" width="22" height="44" rx="9" fill="#1E3D5C"/>
+              <rect x="82" y="266" width="34" height="14" rx="7" fill="#0b1d30"/>
+              <rect x="124" y="266" width="34" height="14" rx="7" fill="#0b1d30"/>
+              <g class="arm-links">
+                <rect x="34" y="150" width="20" height="62" rx="10" fill="#E9EEF3"/>
+                <circle cx="44" cy="214" r="12" fill="#F59E0B"/>
+              </g>
+              <g class="arm-rechts">
+                <rect x="186" y="150" width="20" height="58" rx="10" fill="#E9EEF3"/>
+                <rect x="176" y="196" width="40" height="50" rx="5" fill="#C98408"/>
+                <rect x="182" y="203" width="28" height="38" rx="2" fill="#fff"/>
+                <rect x="186" y="210" width="20" height="3" rx="1.5" fill="#0F2A43"/>
+                <rect x="186" y="218" width="16" height="3" rx="1.5" fill="#0F2A43"/>
+                <rect x="186" y="226" width="20" height="3" rx="1.5" fill="#F59E0B"/>
+                <rect x="190" y="193" width="12" height="7" rx="2" fill="#5B6772"/>
+              </g>
+              <rect x="56" y="138" width="128" height="104" rx="26" fill="#E9EEF3"/>
+              <path d="M76 140 L104 140 L120 196 L136 140 L164 140 L172 236 L68 236 Z" fill="#F59E0B"/>
+              <rect x="70" y="200" width="100" height="9" fill="#FDE7B0"/>
+              <rect x="70" y="216" width="100" height="9" fill="#FDE7B0"/>
+              <circle cx="120" cy="170" r="13" fill="#0F2A43"/>
+              <text x="120" y="176" text-anchor="middle" font-size="16" font-weight="800" fill="#fff" font-family="-apple-system,Segoe UI,Arial,sans-serif">B</text>
+              <circle cx="129" cy="162" r="3.5" fill="#F59E0B"/>
+              <rect x="108" y="124" width="24" height="18" rx="6" fill="#B9C7D4"/>
+              <g class="kopf-gruppe">
+                <rect x="58" y="50" width="124" height="84" rx="28" fill="#E9EEF3"/>
+                <rect x="70" y="62" width="100" height="60" rx="20" fill="#0F2A43"/>
+                <g class="augen">
+                  <ellipse cx="101" cy="90" rx="9" ry="11" fill="#7DD3FC"/>
+                  <ellipse cx="139" cy="90" rx="9" ry="11" fill="#7DD3FC"/>
+                  <circle cx="104" cy="86" r="3" fill="#fff"/>
+                  <circle cx="142" cy="86" r="3" fill="#fff"/>
+                </g>
+                <path d="M106 108 Q120 117 134 108" stroke="#7DD3FC" stroke-width="4" fill="none" stroke-linecap="round"/>
+                <path d="M52 92 Q52 40 120 38 Q188 40 188 92" stroke="#0b1d30" stroke-width="7" fill="none"/>
+                <rect x="44" y="80" width="16" height="30" rx="7" fill="#0b1d30"/>
+                <rect x="180" y="80" width="16" height="30" rx="7" fill="#0b1d30"/>
+                <path d="M52 108 Q56 128 86 124" stroke="#0b1d30" stroke-width="4" fill="none" stroke-linecap="round"/>
+                <circle cx="88" cy="124" r="5" fill="#F59E0B"/>
+                <path d="M62 54 Q64 12 120 10 Q176 12 178 54 Z" fill="#F59E0B"/>
+                <rect x="50" y="50" width="140" height="12" rx="6" fill="#E08D04"/>
+                <rect x="113" y="12" width="14" height="40" rx="5" fill="#FBBF24"/>
+              </g>
+            </g>
+          </svg>
+        </div>
       </div>
     </div>
 
     <section>
       <div class="huelle">
         <h2>So funktioniert es</h2>
-        <p class="unterzeile">Sie behalten Ihre Telefonnummer. Ich kümmere mich um die Einrichtung und den laufenden Betrieb.</p>
+        <p class="unterzeile">Sie behalten Ihre Telefonnummer. Ich richte alles ein und kümmere mich um den laufenden Betrieb.</p>
         <div class="raster">
-          <div class="karte">
+          <div class="karte" data-satz="Kann keiner rangehen? Dann übernehme ich.">
             <div class="nummer">1</div>
             <h3>Anruf geht ein</h3>
-            <p>Können Sie nicht rangehen, nimmt der Assistent die Nachricht des Kunden entgegen.</p>
+            <p>Können Sie nicht rangehen, wird der Anruf nach einigen Sekunden an Ihre Assistentin weitergeleitet.</p>
           </div>
-          <div class="karte">
+          <div class="karte" data-satz="Name, Adresse, Rückrufnummer – ich frage alles ab.">
             <div class="nummer">2</div>
-            <h3>Nachricht wird ausgewertet</h3>
-            <p>Name, Nummer, Adresse und Anliegen werden erkannt, eingeordnet und nach Dringlichkeit sortiert.</p>
+            <h3>Alles wird erfasst</h3>
+            <p>Name, Rückrufnummer, Adresse und Anliegen werden erfasst, eingeordnet und nach Dringlichkeit sortiert. Notfälle werden sofort gemeldet.</p>
           </div>
-          <div class="karte">
+          <div class="karte" data-satz="Fertig! Der Auftrag liegt schon in Ihrer App.">
             <div class="nummer">3</div>
             <h3>Auftrag liegt bereit</h3>
             <p>In Ihrer Aufträge-App sehen Sie alle Anfragen auf einen Blick. Ein Tipp, und Sie rufen zurück.</p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="varianten" class="hell">
+      <div class="huelle">
+        <h2>Zwei Varianten – Sie wählen</h2>
+        <p class="unterzeile">Beide landen in derselben Aufträge-App. Der Unterschied ist, wie der Anrufer empfangen wird.</p>
+        <div class="varianten">
+          <div class="variante" data-satz="Klassisch und bewährt: Ansage, Nachricht, fertig.">
+            <p class="variante-kopf">Klassisch</p>
+            <h3>Anrufbeantworter mit Auswertung</h3>
+            <p class="variante-text">Der Anrufer hört Ihre Ansage und spricht seine Nachricht auf. Daraus wird automatisch ein sortierter Auftrag.</p>
+            <ul class="liste">
+              <li>Ihre persönliche Ansage, auf Wunsch professionell eingesprochen</li>
+              <li>Nachricht wird abgeschrieben und ausgewertet</li>
+              <li>Notfälle werden erkannt und sofort gemeldet</li>
+            </ul>
+          </div>
+          <div class="variante hervor" data-satz="Und ich? Ich führe das ganze Gespräch selbst!">
+            <p class="variante-kopf">Neu · mit KI-Assistentin</p>
+            <h3>KI-Telefonassistentin im echten Gespräch</h3>
+            <p class="variante-text">Statt Anrufbeantworter spricht eine digitale Assistentin mit dem Anrufer – natürlich, freundlich, ohne Warteschleife.</p>
+            <ul class="liste">
+              <li>Fragt gezielt nach, bis Name, Adresse, Rückrufnummer und Anliegen stimmen</li>
+              <li>Lässt sich unterbrechen, versteht „unter dieser Nummer“ und lässt Namen buchstabieren</li>
+              <li>Notfall: verweist bei Gefahr auf die 112 und meldet alles sofort an Sie</li>
+              <li>Gibt keine Preise, Termine oder Reparatur-Tipps heraus – das bleibt bei Ihnen</li>
+              <li>Weist zu Beginn darauf hin, dass sie eine KI ist und das Gespräch aufgezeichnet wird</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="huelle beispiel-raster">
+        <div>
+          <h2>So klingt ein Gespräch</h2>
+          <p class="unterzeile">Ein typischer Anruf, so wie er danach in Ihrer App steht. Probieren Sie es selbst – die Vorführ-Nummer ist rund um die Uhr erreichbar.</p>
+          <a class="knopf" href="tel:+4976319054989">07631 9054989 anrufen</a>
+        </div>
+        <div class="chat" data-satz="So sieht das Gespräch danach in Ihrer App aus.">
+          <div class="sprech ki">Elektro Müller, guten Tag! Hier spricht die KI-Assistentin, das Gespräch wird aufgezeichnet. Wie kann ich Ihnen helfen?</div>
+          <div class="sprech kunde">Hallo, bei uns in der Küche geht eine Steckdose nicht mehr.</div>
+          <div class="sprech ki">Das kläre ich gern. Wie ist Ihr Name?</div>
+          <div class="sprech kunde">Meier, Hauptstraße 5 in Müllheim. Rufen Sie mich einfach unter dieser Nummer zurück.</div>
+          <div class="sprech ki">Gerne. Ich fasse zusammen: Herr Meier, Hauptstraße 5 in Müllheim, Steckdose in der Küche. Stimmt das so?</div>
+          <div class="sprech kunde">Genau.</div>
+          <div class="sprech ki">Vielen Dank, wir melden uns schnellstmöglich. Auf Wiederhören!</div>
         </div>
       </div>
     </section>
@@ -55,10 +164,11 @@
         <p class="unterzeile">Weniger Zettelwirtschaft, weniger verlorene Aufträge, mehr Ruhe bei der Arbeit.</p>
         <ul class="liste">
           <li>Kein Abhören langer Nachrichten mehr: Sie sehen sofort, worum es geht.</li>
-          <li>Notfälle wie Brandgeruch oder Stromausfall werden erkannt und sofort gemeldet.</li>
+          <li>Notfälle wie Brandgeruch oder Stromausfall werden erkannt und sofort per SMS und E-Mail gemeldet.</li>
           <li>Unklare Angaben werden markiert, damit Sie gezielt nachfragen können.</li>
           <li>Aufträge bleiben in der Liste, bis Sie sie abhaken. Nichts geht unter.</li>
-          <li>Einrichtung und Betreuung aus einer Hand, ohne dass Sie sich um Technik kümmern müssen.</li>
+          <li>Tägliche Selbstkontrolle: Fällt etwas aus, werde ich sofort alarmiert – nicht erst Ihr Kunde.</li>
+          <li>Einrichtung vor Ort und Betreuung aus einer Hand. Datenbank in Frankfurt, datenschutzkonform eingerichtet.</li>
         </ul>
       </div>
     </section>
@@ -66,8 +176,11 @@
     <section id="kontakt" class="kontakt">
       <div class="huelle">
         <h2>Interesse?</h2>
-        <p class="unterzeile">Schreiben Sie mir kurz, was für einen Betrieb Sie haben. Ich melde mich und zeige Ihnen, wie der Assistent bei Ihnen aussehen würde.</p>
-        <a class="knopf" href="mailto:paul@brossautomation.de">paul@brossautomation.de</a>
+        <p class="unterzeile">Schreiben Sie mir kurz, was für einen Betrieb Sie haben. Ich melde mich und zeige Ihnen, wie Ihre Assistentin aussehen würde.</p>
+        <div class="knoepfe mitte">
+          <a class="knopf" href="mailto:paul@brossautomation.de">paul@brossautomation.de</a>
+          <a class="knopf zweit-hell" href="tel:+4976319054989">Vorführung anrufen</a>
+        </div>
       </div>
     </section>
   </main>
@@ -78,5 +191,6 @@
       <span><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></span>
     </div>
   </footer>
+  <script src="roboter.js" defer></script>
 </body>
 </html>

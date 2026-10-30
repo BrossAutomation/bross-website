@@ -83,3 +83,68 @@ h2 { font-size: clamp(26px, 4vw, 34px); line-height: 1.2; margin: 0 0 12px; lett
   .rechtstext h1 { font-size: 28px; }
   .kopf nav { display: none; }
 }
+
+/* ===== KI-Assistentin: Startbereich, Maskottchen, Varianten, Chat ===== */
+.kopf nav a + a { margin-left: 20px; }
+.start-raster { display: grid; grid-template-columns: 1.25fr 1fr; gap: 32px; align-items: center; }
+.etikett { display: inline-block; margin: 0 0 16px !important; padding: 6px 12px; border-radius: 999px; background: rgba(245,158,11,.16); color: var(--orange) !important; font-size: 14px !important; font-weight: 700; letter-spacing: .02em; }
+.knoepfe { display: flex; flex-wrap: wrap; gap: 12px; }
+.knoepfe.mitte { justify-content: center; }
+.knopf.zweit { background: transparent; color: #fff; box-shadow: inset 0 0 0 2px rgba(255,255,255,.35); }
+.knopf.zweit-hell { background: transparent !important; color: var(--marine) !important; box-shadow: inset 0 0 0 2px var(--marine); }
+.start .klein { font-size: 14px; color: #9FB2C6; margin: 14px 0 0; }
+
+.buehne { position: relative; display: flex; flex-direction: column; align-items: center; }
+.roboter { width: min(300px, 80%); height: auto; overflow: visible; }
+.blase { position: relative; max-width: 260px; margin-bottom: 14px; padding: 12px 16px; border-radius: 16px; background: #fff; color: var(--marine); font-weight: 700; font-size: 15px; line-height: 1.35; box-shadow: 0 10px 30px rgba(0,0,0,.25); transition: opacity .25s, transform .25s; }
+.blase::after { content: ""; position: absolute; left: 50%; bottom: -8px; width: 16px; height: 16px; background: #fff; transform: translateX(-50%) rotate(45deg); }
+.blase.wechsel { opacity: 0; transform: translateY(6px); }
+
+/* schwebender Begleiter beim Scrollen (Desktop) */
+.begleiter { position: fixed; right: 24px; bottom: 24px; width: 240px; z-index: 20; display: flex; flex-direction: column; align-items: flex-end; pointer-events: none; opacity: 0; transform: translateY(30px) scale(.9); transition: opacity .35s, transform .35s; }
+.begleiter.sichtbar { opacity: 1; transform: none; }
+.begleiter .blase { max-width: 240px; font-size: 14px; margin-bottom: 8px; }
+.begleiter .blase::after { left: auto; right: 48px; transform: rotate(45deg); }
+.begleiter svg { width: 120px; height: auto; overflow: visible; }
+
+@keyframes schweben { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+@keyframes winken { 0%,60%,100% { transform: rotate(0); } 70% { transform: rotate(-28deg); } 80% { transform: rotate(8deg); } 90% { transform: rotate(-22deg); } }
+@keyframes blinzeln { 0%,92%,100% { transform: scaleY(1); } 95% { transform: scaleY(.1); } }
+@keyframes schattenAtmen { 0%,100% { transform: scaleX(1); opacity: .25; } 50% { transform: scaleX(.85); opacity: .15; } }
+.roboter .koerper-gruppe, .begleiter .koerper-gruppe { animation: schweben 4s ease-in-out infinite; }
+.roboter .schatten, .begleiter .schatten { transform-origin: 120px 288px; animation: schattenAtmen 4s ease-in-out infinite; }
+.roboter .arm-links, .begleiter .arm-links { transform-origin: 44px 156px; animation: winken 5s ease-in-out infinite; }
+.roboter .augen, .begleiter .augen { transform-origin: 120px 90px; animation: blinzeln 4.5s infinite; }
+.kopf-gruppe { transform-origin: 120px 128px; transition: transform .2s ease-out; }
+
+/* Varianten */
+.varianten { display: grid; grid-template-columns: 1fr 1.25fr; gap: 18px; align-items: stretch; }
+.variante { background: var(--hintergrund); border: 1px solid var(--linie); border-radius: 18px; padding: 26px; }
+.variante h3 { margin: 0 0 8px; font-size: 21px; line-height: 1.25; }
+.variante-kopf { margin: 0 0 10px; font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--text-leise); }
+.variante-text { margin: 0 0 18px; color: var(--text-leise); }
+.variante .liste { gap: 10px; }
+.variante.hervor { background: var(--marine); border-color: var(--marine); color: #fff; box-shadow: 0 18px 40px rgba(15,42,67,.25); position: relative; }
+.variante.hervor .variante-kopf { color: var(--orange); }
+.variante.hervor .variante-text { color: #C5D1E0; }
+
+/* Chat-Beispiel */
+.beispiel-raster { display: grid; grid-template-columns: 1fr 1.1fr; gap: 32px; align-items: center; }
+.chat { display: flex; flex-direction: column; gap: 10px; background: var(--flaeche); border: 1px solid var(--linie); border-radius: 20px; padding: 20px; }
+.sprech { max-width: 86%; padding: 10px 14px; border-radius: 16px; font-size: 15px; line-height: 1.4; opacity: 0; transform: translateY(8px); transition: opacity .4s, transform .4s; }
+.chat.sichtbar .sprech { opacity: 1; transform: none; }
+.sprech.ki { align-self: flex-start; background: var(--hintergrund); border: 1px solid var(--linie); border-bottom-left-radius: 4px; }
+.sprech.kunde { align-self: flex-end; background: var(--marine); color: #fff; border-bottom-right-radius: 4px; }
+
+@media (max-width: 860px) {
+  .start-raster, .beispiel-raster, .varianten { grid-template-columns: 1fr; }
+  .buehne { order: -1; }
+  .roboter { width: 190px; }
+  .blase { font-size: 14px; }
+  .begleiter { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .roboter *, .begleiter *, .blase, .sprech, .begleiter { animation: none !important; transition: none !important; }
+  .sprech { opacity: 1; transform: none; }
+}
