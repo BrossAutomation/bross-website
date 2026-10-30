@@ -95,27 +95,53 @@ h2 { font-size: clamp(26px, 4vw, 34px); line-height: 1.2; margin: 0 0 12px; lett
 .start .klein { font-size: 14px; color: #9FB2C6; margin: 14px 0 0; }
 
 .buehne { display: flex; justify-content: center; }
-/* Handy mit eintreffenden Aufträgen */
-.handy { position: relative; width: 290px; height: 540px; padding: 44px 14px 14px; border-radius: 46px; background: #F5F7F9; border: 10px solid #0a1a2b; box-shadow: 0 0 0 2px #2b4a68, 0 40px 80px rgba(0,0,0,.45), 0 0 120px rgba(245,158,11,.12); overflow: hidden; color: var(--text); transform: rotate(-3deg); }
-.handy-insel { position: absolute; top: 10px; left: 50%; width: 92px; height: 26px; margin-left: -46px; border-radius: 99px; background: #0a1a2b; }
-.handy-kopf { display: flex; justify-content: space-between; align-items: center; padding: 4px 6px 10px; font-size: 22px; color: var(--marine); }
-.live { font-size: 12px; font-weight: 700; color: #15803D; display: flex; align-items: center; gap: 6px; }
-.live::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #22C55E; animation: pulsieren 1.6s infinite; }
-.anruf { position: absolute; z-index: 2; top: 40px; left: 12px; right: 12px; display: flex; align-items: center; gap: 10px; box-shadow: 0 10px 24px rgba(15,42,67,.35); padding: 10px 12px; border-radius: 14px; background: var(--marine); color: #fff; font-size: 13px; font-weight: 600; opacity: 0; transform: translateY(-8px); transition: opacity .35s, transform .35s; }
-.anruf.an { opacity: 1; transform: none; }
-.anruf-punkt { width: 10px; height: 10px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 0 0 rgba(245,158,11,.6); animation: klingeln 1.2s infinite; flex: none; }
-.auftraege { display: flex; flex-direction: column; gap: 8px; }
-.auftrag { display: grid; gap: 2px; padding: 12px 14px; border-radius: 16px; background: #fff; border: 1px solid var(--linie); box-shadow: 0 2px 6px rgba(15,42,67,.06); font-size: 14px; line-height: 1.3; transition: transform .45s, opacity .45s, box-shadow .6s; }
-.auftrag b { color: var(--text); }
-.auftrag small { color: var(--text-leise); font-size: 12px; }
-.auftrag.rein { opacity: 0; transform: translateY(-14px) scale(.97); }
-.auftrag.frisch { box-shadow: 0 0 0 2px var(--orange), 0 8px 20px rgba(245,158,11,.25); }
-.marke-klein { justify-self: start; margin-bottom: 4px; padding: 1px 8px; border-radius: 99px; font-size: 11px; font-weight: 800; letter-spacing: .02em; }
-.marke-klein.normal { background: #E0F2FE; color: #075985; }
-.marke-klein.notfall { background: #FEE4E2; color: var(--notfall); }
-.marke-klein.angebot { background: #FEF3C7; color: #92400E; }
-@keyframes pulsieren { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
-@keyframes klingeln { 0% { box-shadow: 0 0 0 0 rgba(245,158,11,.6); } 100% { box-shadow: 0 0 0 10px rgba(245,158,11,0); } }
+/* Handy: Nachbau der Aufträge-App (Farben und Maße wie in der App, verkleinert) */
+.handy { --s: .69; position: relative; width: 290px; height: 590px; border-radius: 50px; border: 10px solid #0a1a2b; background: #0a1a2b; box-shadow: 0 0 0 2px #2b4a68, 0 40px 80px rgba(0,0,0,.45), 0 0 120px rgba(245,158,11,.10); transform: rotate(-2.5deg); }
+.bildschirm { position: relative; width: 100%; height: 100%; border-radius: 40px; overflow: hidden; background: #F4F6F8; }
+.app { width: 391px; transform: scale(var(--s)); transform-origin: 0 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; color: #1F3346; line-height: 1.3; }
+.insel { position: absolute; top: 9px; left: 50%; width: 84px; height: 24px; margin-left: -42px; border-radius: 99px; background: #000; z-index: 3; }
+.app-kopf { background: #0F2A43; padding: 0 20px 18px; }
+.statusleiste { display: flex; justify-content: space-between; align-items: center; height: 54px; padding: 0 14px 0 22px; color: #fff; font-size: 16px; font-weight: 700; }
+.status-rechts { display: flex; align-items: flex-end; gap: 2px; }
+.status-rechts i { display: block; width: 4px; background: #fff; border-radius: 1px; }
+.status-rechts i:nth-child(1) { height: 5px; } .status-rechts i:nth-child(2) { height: 7px; } .status-rechts i:nth-child(3) { height: 9px; } .status-rechts i:nth-child(4) { height: 11px; }
+.status-rechts b { display: block; width: 24px; height: 12px; margin-left: 6px; border: 1.5px solid rgba(255,255,255,.6); border-radius: 4px; box-shadow: inset 0 0 0 1.5px #0F2A43, inset 20px 0 0 #fff; }
+.kopf-zeile { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+.betrieb { font-size: 13px; font-weight: 600; color: #C9D4DF; }
+.titel { font-size: 28px; font-weight: 800; color: #fff; }
+.app-logo { width: 44px; height: 44px; }
+.tabs { display: flex; gap: 8px; }
+.tab { flex: 1; min-height: 44px; display: flex; align-items: center; justify-content: center; border-radius: 12px; background: #1E3D5C; color: #fff; font-size: 14px; font-weight: 700; }
+.tab.an { background: #fff; color: #0F2A43; }
+.app-liste { padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+.ak { display: flex; flex-direction: column; gap: 6px; padding: 16px; border-radius: 16px; background: #fff; border: 1px solid #E3E8ED; transition: transform .5s, opacity .5s, box-shadow .8s; }
+.ak.notfall { border: 2px solid #B42318; }
+.ak.rein { opacity: 0; transform: translateY(-20px); }
+.ak.frisch { box-shadow: 0 0 0 3px rgba(245,158,11,.55), 0 10px 24px rgba(15,42,67,.12); }
+.ak-oben { display: flex; justify-content: space-between; align-items: center; min-height: 26px; }
+.zeit { font-size: 13px; font-weight: 600; color: #4B5B6B; }
+.mk { display: inline-flex; align-items: center; gap: 6px; padding: 5px 10px; border-radius: 999px; font-size: 12px; font-weight: 800; letter-spacing: .4px; }
+.mk svg { width: 14px; height: 14px; fill: none; stroke: #fff; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.mk.notfall { background: #B42318; color: #fff; }
+.mk.dringend { background: #FDE9C8; color: #7A4A00; }
+.mk.pruefen { background: #EEF1F4; color: #4B5B6B; }
+.name { font-size: 18px; font-weight: 800; color: #0F2A43; }
+.anliegen { font-size: 15px; line-height: 21px; }
+.adresse { font-size: 14px; color: #4B5B6B; }
+.ak-unten { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 4px; }
+.kat { font-size: 12px; font-weight: 700; color: #4B5B6B; background: #EEF1F4; padding: 5px 10px; border-radius: 999px; }
+.rr { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px; border-radius: 12px; background: #0F2A43; color: #fff; font-size: 15px; font-weight: 800; }
+.ak.notfall .rr { background: #B42318; }
+.rr svg { width: 18px; height: 18px; fill: none; stroke: #fff; stroke-width: 2; }
+/* iPhone-Mitteilung */
+.mitteilung { position: absolute; z-index: 4; top: 40px; left: 8px; right: 8px; display: flex; gap: 9px; padding: 10px; border-radius: 18px; background: rgba(245,247,249,.82); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); box-shadow: 0 10px 30px rgba(0,0,0,.3); color: #111; font-size: 12px; line-height: 1.3; opacity: 0; transform: translateY(-70px); transition: opacity .4s, transform .45s cubic-bezier(.2,.9,.3,1.2); }
+.mitteilung.an { opacity: 1; transform: none; }
+.mitteilung img { width: 30px; height: 30px; flex: none; }
+.mitteilung > div { flex: 1; min-width: 0; }
+.mt-kopf { display: flex; justify-content: space-between; color: #555; font-size: 11px; }
+.mt-kopf b { font-weight: 600; text-transform: uppercase; letter-spacing: .3px; }
+.mt-titel { font-weight: 700; }
+.mt-text { overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
 .kopf-gruppe { transform-origin: 120px 128px; transition: transform .2s ease-out; }
 
 /* Varianten */
@@ -139,7 +165,7 @@ h2 { font-size: clamp(26px, 4vw, 34px); line-height: 1.2; margin: 0 0 12px; lett
 
 @media (max-width: 860px) {
   .start-raster, .beispiel-raster, .varianten { grid-template-columns: 1fr; }
-  .handy { width: 270px; height: 440px; transform: none; margin-top: 8px; }
+  .handy { --s: .64; width: 270px; height: 500px; transform: none; margin-top: 8px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -16,43 +16,50 @@
     }, { rootMargin: "0px 0px -25% 0px" }).observe(chat);
   }
 
-  // Handy: Anruf kommt rein, KI nimmt ab, daraus wird ein neuer Auftrag
+  // Handy (Nachbau der App): Mitteilung "Neuer Auftrag", dann rutscht die Karte oben in die Liste
   var liste = document.getElementById("auftraege");
-  var anruf = document.getElementById("anruf");
-  var anrufText = document.getElementById("anruf-text");
-  if (!liste || !anruf || ruhig) return;
+  var mitteilung = document.getElementById("mitteilung");
+  var anzahl = document.getElementById("anzahl");
+  if (!liste || !mitteilung || ruhig) return;
+  var telefon = liste.querySelector(".rr svg").outerHTML;
+  var warn = liste.querySelector(".mk.notfall svg").outerHTML;
 
+  // [Dringlichkeit, Name, Anliegen, Adresse, Kategorie]
   var beispiele = [
-    ["normal", "Neu", "Licht im Flur flackert", "Wagner · Badenweiler"],
-    ["angebot", "Angebot", "Badsanierung, Termin für Besichtigung", "Fischer · Schliengen"],
-    ["notfall", "Notfall", "Wasser tropft aus der Decke", "Huber · Neuenburg"],
-    ["normal", "Neu", "Heizung wird nicht mehr warm", "Becker · Müllheim"],
-    ["angebot", "Angebot", "Photovoltaik fürs Dach", "Schmid · Auggen"],
-    ["normal", "Neu", "Rollladen klemmt im Wohnzimmer", "Weber · Bad Bellingen"],
+    ["", "Petra Hofmann", "Im Bad flackert das Licht, seit gestern auch der Spiegelschrank.", "Schulstraße 12, 79410 Badenweiler", "Beleuchtung"],
+    ["dringend", "Markus Becker", "Die Heizungspumpe läuft nicht mehr an, im Haus wird es kalt.", "Am Rain 5, 79379 Müllheim", "Heizung"],
+    ["notfall", "Familie Weber", "Brandgeruch am Sicherungskasten, eine Sicherung ist heiß.", "Kirchweg 2, 79415 Bad Bellingen", "Sicherung/Elektrik"],
+    ["pruefen", "Herr Schmid", "Drei Steckdosen im Wohnzimmer ohne Funktion, möchte einen Termin.", "Weinstraße, 79423 Heitersheim · Hausnummer fehlt", "Steckdose"],
+    ["", "Julia Fischer", "Möchte ein Angebot für eine Photovoltaikanlage auf dem Garagendach.", "Mühlenweg 9, 79418 Schliengen", "Photovoltaik"],
   ];
-  var n = 0;
+  var marken = { notfall: warn + "NOTFALL", dringend: "DRINGEND", pruefen: "ANGABEN PRÜFEN" };
+  var n = 0, zahl = 3;
 
   function karte(b) {
     var d = document.createElement("div");
-    d.className = "auftrag rein";
-    d.innerHTML = '<span class="marke-klein ' + b[0] + '">' + b[1] + "</span><b>" + b[2] + "</b><small>" + b[3] + " · gerade eben</small>";
+    d.className = "ak rein" + (b[0] === "notfall" ? " notfall" : "");
+    d.innerHTML = '<div class="ak-oben">' + (b[0] ? '<span class="mk ' + b[0] + '">' + marken[b[0]] + "</span>" : "<span></span>") +
+      '<span class="zeit">gerade eben</span></div><div class="name">' + b[1] + '</div><div class="anliegen">' + b[2] +
+      '</div><div class="adresse">' + b[3] + '</div><div class="ak-unten"><span class="kat">' + b[4] +
+      '</span><span class="rr">' + telefon + " Zurückrufen</span></div>";
     return d;
   }
 
   function runde() {
     var b = beispiele[n++ % beispiele.length];
-    anrufText.textContent = "Anruf · KI-Assistentin nimmt ab …";
-    anruf.classList.add("an");
-    setTimeout(function () { anrufText.textContent = "Fragt Name, Adresse, Anliegen ab …"; }, 1600);
+    document.getElementById("mt-titel").textContent = (b[0] === "notfall" ? "NOTFALL: " : "Neuer Auftrag: ") + b[1];
+    document.getElementById("mt-text").textContent = b[2];
+    mitteilung.classList.add("an");
     setTimeout(function () {
-      anruf.classList.remove("an");
+      mitteilung.classList.remove("an");
       var neu = karte(b);
-      liste.insertBefore(neu, liste.firstChild);
       liste.querySelectorAll(".frisch").forEach(function (k) { k.classList.remove("frisch"); });
+      liste.insertBefore(neu, liste.firstChild);
+      anzahl.textContent = ++zahl;
       requestAnimationFrame(function () { requestAnimationFrame(function () { neu.classList.remove("rein"); neu.classList.add("frisch"); }); });
-      var alle = liste.querySelectorAll(".auftrag");
-      if (alle.length > 4) alle[alle.length - 1].remove();
-    }, 3400);
+      var alle = liste.querySelectorAll(".ak");
+      if (alle.length > 5) alle[alle.length - 1].remove();
+    }, 2600);
   }
-  setTimeout(function () { runde(); setInterval(runde, 6500); }, 1200);
+  setTimeout(function () { runde(); setInterval(runde, 6500); }, 1500);
 })();

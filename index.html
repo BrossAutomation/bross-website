@@ -31,13 +31,24 @@
         </div>
         <div class="buehne" aria-hidden="true">
           <div class="handy">
-            <div class="handy-insel"></div>
-            <div class="handy-kopf"><strong>Aufträge</strong><span class="live">live</span></div>
-            <div class="anruf" id="anruf"><span class="anruf-punkt"></span><span id="anruf-text">Anruf wird angenommen …</span></div>
-            <div class="auftraege" id="auftraege">
-              <div class="auftrag"><span class="marke-klein normal">Neu</span><b>Steckdose in der Küche ohne Strom</b><small>Meier · Müllheim · vor 4 Min.</small></div>
-              <div class="auftrag"><span class="marke-klein notfall">Notfall</span><b>Brandgeruch am Sicherungskasten</b><small>Schulz · Neuenburg · vor 18 Min.</small></div>
-              <div class="auftrag"><span class="marke-klein angebot">Angebot</span><b>Wallbox für die Garage</b><small>Keller · Auggen · gestern</small></div>
+            <div class="bildschirm">
+              <div class="app">
+                <div class="app-kopf">
+                  <div class="statusleiste"><span>9:41</span><span class="status-rechts"><i></i><i></i><i></i><i></i><b></b></span></div>
+                  <div class="kopf-zeile">
+                    <div><div class="betrieb">Elektro Müller</div><div class="titel">Aufträge</div></div>
+                    <img class="app-logo" src="logo.svg" alt="">
+                  </div>
+                  <div class="tabs"><span class="tab an">Neu · <span id="anzahl">3</span></span><span class="tab">Angerufen · 1</span><span class="tab">Erledigt</span></div>
+                </div>
+                <div class="app-liste" id="auftraege">
+                  <div class="ak notfall"><div class="ak-oben"><span class="mk notfall"><svg viewBox="0 0 24 24"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17v.5"/></svg>NOTFALL</span><span class="zeit">vor 12 Min.</span></div><div class="name">Klaus Riedlin</div><div class="anliegen">Seit dem Gewitter kein Strom im ganzen Haus, die Sicherung fliegt sofort wieder raus.</div><div class="adresse">Hauptstraße 41, 79379 Müllheim</div><div class="ak-unten"><span class="kat">Sicherung/Elektrik</span><span class="rr"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg> Zurückrufen</span></div></div>
+                  <div class="ak"><div class="ak-oben"><span class="mk dringend">DRINGEND</span><span class="zeit">heute, 16:18</span></div><div class="name">Sabine Kiefer</div><div class="anliegen">Herd und Backofen gehen nicht mehr, der FI-Schalter löst beim Einschalten aus.</div><div class="adresse">Rebstraße 7, 79395 Neuenburg am Rhein</div><div class="ak-unten"><span class="kat">FI-Schutzschalter</span><span class="rr"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg> Zurückrufen</span></div></div>
+                  <div class="ak"><div class="ak-oben"><span></span><span class="zeit">heute, 11:02</span></div><div class="name">Thomas Wagner</div><div class="anliegen">Möchte ein Angebot für eine Wallbox in der Garage.</div><div class="adresse">Lindenweg 3, 79424 Auggen</div><div class="ak-unten"><span class="kat">Wallbox</span><span class="rr"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg> Zurückrufen</span></div></div>
+                </div>
+              </div>
+              <div class="insel"></div>
+              <div class="mitteilung" id="mitteilung"><img src="logo.svg" alt=""><div><div class="mt-kopf"><b>Aufträge</b><span>jetzt</span></div><div class="mt-titel" id="mt-titel">Neuer Auftrag</div><div class="mt-text" id="mt-text"></div></div></div>
             </div>
           </div>
         </div>
