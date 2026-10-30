@@ -95,6 +95,11 @@ h2 { font-size: clamp(26px, 4vw, 34px); line-height: 1.2; margin: 0 0 12px; lett
 .start .klein { font-size: 14px; color: #9FB2C6; margin: 14px 0 0; }
 
 .buehne { display: flex; justify-content: center; }
+/* Vertrauensmerkmale im Startbereich */
+.vertrauen { list-style: none; display: flex; flex-direction: column; gap: 8px; margin: -12px 0 28px; padding: 0; }
+.vertrauen li { display: flex; align-items: center; gap: 8px; color: #fff; font-size: 15px; font-weight: 600; }
+.vertrauen li::before { content: ""; flex: none; width: 20px; height: 20px; border-radius: 50%; background: var(--orange) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230F2A43' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/13px no-repeat; }
+
 /* Handy: Nachbau der Aufträge-App (Farben und Maße wie in der App, verkleinert) */
 .handy { --s: .69; position: relative; width: 290px; height: 590px; border-radius: 50px; border: 10px solid #0a1a2b; background: #0a1a2b; box-shadow: 0 0 0 2px #2b4a68, 0 40px 80px rgba(0,0,0,.45), 0 0 120px rgba(245,158,11,.10); transform: rotate(-2.5deg); }
 .bildschirm { position: relative; width: 100%; height: 100%; border-radius: 40px; overflow: hidden; background: #F4F6F8; }
