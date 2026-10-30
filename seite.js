@@ -16,6 +16,56 @@
     }, { rootMargin: "0px 0px -25% 0px" }).observe(chat);
   }
 
+  // Ablauf: Der Schritt in der Bildschirmmitte bestimmt, was das stehende Handy zeigt
+  var schritte = document.querySelectorAll(".schritt");
+  var ebenen = document.querySelectorAll(".ablauf .ebene");
+  var gsZeit = document.querySelector(".gs-zeit"), uhr = null;
+  function zeigeSchritt(n) {
+    schritte.forEach(function (s, i) { s.classList.toggle("an", i === n); });
+    ebenen.forEach(function (e, i) { e.classList.toggle("an", i === n); });
+    clearInterval(uhr);
+    if (n === 1 && gsZeit) {
+      var t = 0; gsZeit.textContent = "0:00";
+      uhr = setInterval(function () { t++; gsZeit.textContent = Math.floor(t / 60) + ":" + ("0" + (t % 60)).slice(-2); }, 1000);
+    }
+  }
+  if (schritte.length && "IntersectionObserver" in window) {
+    var schmal = window.matchMedia("(max-width: 860px)").matches;
+    var sb = new IntersectionObserver(function (eintraege) {
+      eintraege.forEach(function (e) { if (e.isIntersecting) zeigeSchritt(+e.target.getAttribute("data-schritt")); });
+    }, { rootMargin: schmal ? "-22% 0px -77% 0px" : "-48% 0px -51% 0px" });
+    schritte.forEach(function (s) { sb.observe(s); });
+  }
+
+  // Inhalte gleiten beim Scrollen sanft ins Bild
+  if (!ruhig && "IntersectionObserver" in window) {
+    var teile = document.querySelectorAll("section h2, section .unterzeile, .variante, .beispiel-raster > div, .liste li, .kontakt .knoepfe");
+    var eb = new IntersectionObserver(function (eintraege) {
+      eintraege.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("da"); eb.unobserve(e.target); } });
+    }, { rootMargin: "0px 0px -8% 0px" });
+    teile.forEach(function (t, i) {
+      var geschwister = t.parentNode ? Array.prototype.indexOf.call(t.parentNode.children, t) : 0;
+      t.style.transitionDelay = Math.min(geschwister, 5) * 70 + "ms";
+      t.classList.add("einblenden");
+      eb.observe(t);
+    });
+  }
+
+  // Handy oben kippt leicht mit der Maus (nur mit Maus, nicht auf dem Handy)
+  var startHandy = document.querySelector(".start .handy");
+  if (startHandy && !ruhig && window.matchMedia("(hover: hover) and (min-width: 861px)").matches) {
+    document.querySelector(".start").addEventListener("pointermove", function (e) {
+      var r = startHandy.getBoundingClientRect();
+      var x = (e.clientX - (r.left + r.width / 2)) / window.innerWidth;
+      var y = (e.clientY - (r.top + r.height / 2)) / window.innerHeight;
+      startHandy.style.setProperty("--ry", (x * 16).toFixed(2) + "deg");
+      startHandy.style.setProperty("--rx", (-y * 12).toFixed(2) + "deg");
+    });
+    document.querySelector(".start").addEventListener("pointerleave", function () {
+      startHandy.style.setProperty("--ry", "0deg"); startHandy.style.setProperty("--rx", "0deg");
+    });
+  }
+
   // Handy (Nachbau der App): Mitteilung "Neuer Auftrag", dann rutscht die Karte oben in die Liste
   var liste = document.getElementById("auftraege");
   var mitteilung = document.getElementById("mitteilung");

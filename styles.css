@@ -168,12 +168,82 @@ h2 { font-size: clamp(26px, 4vw, 34px); line-height: 1.2; margin: 0 0 12px; lett
 .sprech.ki { align-self: flex-start; background: var(--hintergrund); border: 1px solid var(--linie); border-bottom-left-radius: 4px; }
 .sprech.kunde { align-self: flex-end; background: var(--marine); color: #fff; border-bottom-right-radius: 4px; }
 
+/* Ablauf: Handy bleibt stehen, Bildschirm wechselt mit dem Schritt */
+.ablauf-raster { display: grid; grid-template-columns: 1fr 320px; gap: 48px; }
+.schritt { min-height: 72vh; display: flex; flex-direction: column; justify-content: center; opacity: .3; transition: opacity .5s; max-width: 440px; }
+.schritt.an { opacity: 1; }
+.schritt:first-child { min-height: 60vh; justify-content: flex-start; padding-top: 8vh; }
+.schritt h3 { font-size: clamp(24px, 3vw, 32px); line-height: 1.15; margin: 0 0 12px; letter-spacing: -.01em; }
+.schritt p { margin: 0; color: var(--text-leise); font-size: 18px; }
+.ablauf-buehne { position: relative; }
+.ablauf-buehne .handy { position: sticky; top: calc(50vh - 295px); transform: none; box-shadow: 0 0 0 2px #2b4a68, 0 40px 80px rgba(15,42,67,.35); }
+.ebene { position: absolute; inset: 0; opacity: 0; transform: scale(.94); filter: blur(6px); transition: opacity .6s, transform .7s cubic-bezier(.2,.8,.2,1), filter .6s; pointer-events: none; }
+.ebene.an { opacity: 1; transform: none; filter: none; }
+.ebene .app { height: calc(100% / var(--s)); }
+/* Schritt 1: Anrufbildschirm */
+.anrufbild { display: flex; flex-direction: column; align-items: center; padding: 120px 30px 70px; background: radial-gradient(120% 70% at 50% 0%, #3b5a78 0%, #1a2f45 55%, #0b1724 100%); color: #fff; text-align: center; }
+.ab-oben { font-size: 17px; color: rgba(255,255,255,.65); }
+.ab-nummer { font-size: 38px; font-weight: 400; margin-top: 6px; letter-spacing: -.01em; }
+.ab-ort { font-size: 17px; color: rgba(255,255,255,.65); margin-top: 4px; }
+.ab-weiter { display: flex; align-items: center; gap: 10px; margin-top: 60px; padding: 12px 18px; border-radius: 999px; background: rgba(245,158,11,.18); border: 1px solid rgba(245,158,11,.5); color: #FDE7B0; font-size: 15px; font-weight: 700; opacity: 0; transform: translateY(10px); transition: opacity .5s 1.4s, transform .5s 1.4s; }
+.e0.an .ab-weiter { opacity: 1; transform: none; }
+.ab-punkt { width: 10px; height: 10px; border-radius: 50%; background: var(--orange); animation: klingeln 1.2s infinite; flex: none; }
+.ab-knoepfe { margin-top: auto; width: 100%; display: flex; justify-content: space-between; padding: 0 20px; }
+.ab-knoepfe > div { display: flex; flex-direction: column; align-items: center; gap: 10px; font-size: 15px; }
+.rund { width: 78px; height: 78px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.rund svg { width: 34px; height: 34px; fill: #fff; stroke: none; }
+.rund.rot { background: #EB4E3D; } .rund.rot svg { transform: rotate(135deg); }
+.rund.gruen { background: #65C466; animation: atmen 1.4s ease-in-out infinite; }
+@keyframes atmen { 0%,100% { box-shadow: 0 0 0 0 rgba(101,196,102,.55); } 50% { box-shadow: 0 0 0 16px rgba(101,196,102,0); } }
+/* Schritt 2: Gespräch */
+.gespraech { display: flex; flex-direction: column; padding: 70px 20px 24px; background: linear-gradient(180deg, #0F2A43 0%, #13324f 100%); color: #fff; }
+.gs-kopf { display: flex; align-items: center; gap: 12px; }
+.gs-kopf img { width: 48px; height: 48px; }
+.gs-kopf b { display: block; font-size: 20px; }
+.gs-kopf span { font-size: 14px; color: #9fd8a0; font-weight: 600; }
+.welle { display: flex; align-items: center; justify-content: center; gap: 5px; height: 90px; margin: 18px 0 10px; }
+.welle i { width: 6px; height: 14px; border-radius: 3px; background: linear-gradient(180deg, #FBBF24, #F59E0B); animation: welle 1.1s ease-in-out infinite; animation-delay: calc(var(--i) * -0.09s); }
+.welle i:nth-child(3n) { animation-duration: .8s; } .welle i:nth-child(4n+1) { animation-duration: 1.35s; }
+@keyframes welle { 0%,100% { height: 10px; opacity: .6; } 50% { height: 70px; opacity: 1; } }
+.gs-verlauf { display: flex; flex-direction: column; gap: 10px; }
+.gs { max-width: 82%; padding: 10px 14px; border-radius: 18px; font-size: 15px; line-height: 1.35; opacity: 0; transform: translateY(10px); transition: opacity .4s, transform .4s; }
+.gs.k { align-self: flex-end; background: #fff; color: #0F2A43; border-bottom-right-radius: 5px; }
+.gs.ki { align-self: flex-start; background: #1E3D5C; border-bottom-left-radius: 5px; }
+.gs-fertig { align-self: center; margin-top: 8px; padding: 8px 16px; border-radius: 999px; background: #2F6B3B; font-size: 14px; font-weight: 800; opacity: 0; transform: scale(.8); transition: opacity .4s, transform .4s cubic-bezier(.2,.9,.3,1.4); }
+.e1.an .gs, .e1.an .gs-fertig { opacity: 1; transform: none; }
+.e1.an .gs:nth-child(1) { transition-delay: .4s; } .e1.an .gs:nth-child(2) { transition-delay: 1.3s; } .e1.an .gs:nth-child(3) { transition-delay: 2.2s; }
+.e1.an .gs:nth-child(4) { transition-delay: 3.1s; } .e1.an .gs:nth-child(5) { transition-delay: 4s; } .e1.an .gs-fertig { transition-delay: 4.7s; }
+/* Schritt 3: Auftrag in der App */
+.story-mitteilung { transition-delay: 0s; }
+.e2.an .story-mitteilung { opacity: 1; transform: none; transition-delay: .5s; }
+.story-karte { opacity: 0; transform: translateY(-16px); }
+.e2.an .story-karte { opacity: 1; transform: none; transition-delay: 1.2s; box-shadow: 0 0 0 3px rgba(245,158,11,.55), 0 10px 24px rgba(15,42,67,.12); }
+
+/* sanftes Einblenden beim Scrollen */
+.einblenden { opacity: 0; transform: translateY(28px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
+.einblenden.da { opacity: 1; transform: none; }
+/* Handy oben kippt mit der Maus */
+.start .handy { transform: perspective(1400px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) rotate(-2.5deg); transition: transform .25s ease-out; }
+
 @media (max-width: 860px) {
   .start-raster, .beispiel-raster, .varianten { grid-template-columns: 1fr; }
   .handy { --s: .64; width: 270px; height: 500px; transform: none; margin-top: 8px; }
+  .start .handy { transform: none; }
+  .ablauf-raster { grid-template-columns: 1fr; gap: 0; }
+  .ablauf-buehne { order: -1; position: sticky; top: 64px; z-index: 2; height: 0; display: flex; justify-content: center; }
+  .ablauf-buehne::before { content: ""; position: absolute; top: -64px; left: -20px; right: -20px; height: 470px; background: linear-gradient(var(--hintergrund) 90%, rgba(245,247,249,0)); }
+  .ablauf-buehne .handy { --s: .47; position: absolute; top: 6px; width: 198px; height: 380px; border-width: 7px; border-radius: 38px; }
+  .ablauf-buehne .bildschirm { border-radius: 31px; }
+  .ablauf-buehne .mitteilung { zoom: .7; top: 44px; }
+  .ablauf-buehne .insel { width: 60px; height: 18px; margin-left: -30px; top: 7px; }
+  .schritt { min-height: 95vh; max-width: none; justify-content: flex-start; padding-top: 420px; }
+  .schritt:first-child { min-height: 95vh; padding-top: 420px; }
+  .schritt h3 { font-size: 22px; }
+  .schritt p { font-size: 16px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .handy *, .sprech { animation: none !important; transition: none !important; }
+  .handy *, .sprech, .einblenden, .start .handy { animation: none !important; transition: none !important; }
+  .einblenden { opacity: 1; transform: none; }
   .sprech { opacity: 1; transform: none; }
 }
