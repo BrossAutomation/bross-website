@@ -230,14 +230,14 @@ h2 { font-size: clamp(26px, 4vw, 34px); line-height: 1.2; margin: 0 0 12px; lett
   .handy { --s: .64; width: 270px; height: 500px; transform: none; margin-top: 8px; }
   .start .handy { transform: none; }
   .ablauf-raster { grid-template-columns: 1fr; gap: 0; }
-  .ablauf-buehne { order: -1; position: sticky; top: 64px; z-index: 2; height: 0; display: flex; justify-content: center; }
-  .ablauf-buehne::before { content: ""; position: absolute; top: -64px; left: -20px; right: -20px; height: 470px; background: linear-gradient(var(--hintergrund) 90%, rgba(245,247,249,0)); }
-  .ablauf-buehne .handy { --s: .47; position: absolute; top: 6px; width: 198px; height: 380px; border-width: 7px; border-radius: 38px; }
-  .ablauf-buehne .bildschirm { border-radius: 31px; }
-  .ablauf-buehne .mitteilung { zoom: .7; top: 44px; }
-  .ablauf-buehne .insel { width: 60px; height: 18px; margin-left: -30px; top: 7px; }
-  .schritt { min-height: 95vh; max-width: none; justify-content: flex-start; padding-top: 420px; }
-  .schritt:first-child { min-height: 95vh; padding-top: 420px; }
+  .ablauf-buehne { order: -1; position: sticky; top: 60px; z-index: 2; height: 360px; display: flex; justify-content: center; }
+  .ablauf-buehne::before { content: ""; position: absolute; top: -48px; left: -20px; right: -20px; height: 430px; background: linear-gradient(var(--hintergrund) 88%, rgba(245,247,249,0)); }
+  .ablauf-buehne .handy { --s: .425; position: relative; top: 0; width: 180px; height: 350px; border-width: 7px; border-radius: 36px; }
+  .ablauf-buehne .bildschirm { border-radius: 29px; }
+  .ablauf-buehne .mitteilung { zoom: .64; top: 40px; }
+  .ablauf-buehne .insel { width: 56px; height: 17px; margin-left: -28px; top: 7px; }
+  .schritt { min-height: 92vh; max-width: none; justify-content: flex-start; padding-top: 390px; }
+  .schritt:first-child { min-height: 0; padding: 24px 0 40vh; }
   .schritt h3 { font-size: 22px; }
   .schritt p { font-size: 16px; }
 }
