@@ -172,8 +172,12 @@ h2 { font-size: clamp(26px, 4vw, 34px); line-height: 1.2; margin: 0 0 12px; lett
 
 /* Ablauf: Handy bleibt stehen, Bildschirm wechselt mit dem Schritt */
 .ablauf-raster { display: grid; grid-template-columns: 1fr 320px; gap: 48px; }
-.schritt { min-height: 72vh; display: flex; flex-direction: column; justify-content: center; opacity: .3; transition: opacity .5s; max-width: 440px; }
-.schritt.an { opacity: 1; }
+.schritt { min-height: 72vh; display: flex; flex-direction: column; justify-content: center; max-width: 440px; }
+.schritt h3, .schritt p { transition: color .5s; }
+.schritt:not(.an) h3 { color: #7C8896; }
+.schritt:not(.an) p { color: #5F6A77; }
+.schritt .nummer { transition: background .5s; }
+.schritt:not(.an) .nummer { background: #6B7683; }
 .schritt:first-child { min-height: 60vh; justify-content: flex-start; padding-top: 8vh; }
 .schritt h3 { font-size: clamp(24px, 3vw, 32px); line-height: 1.15; margin: 0 0 12px; letter-spacing: -.01em; }
 .schritt p { margin: 0; color: var(--text-leise); font-size: 18px; }
@@ -181,6 +185,7 @@ h2 { font-size: clamp(26px, 4vw, 34px); line-height: 1.2; margin: 0 0 12px; lett
 .ablauf-buehne .handy { position: sticky; top: calc(50vh - 295px); transform: none; box-shadow: 0 0 0 2px #2b4a68, 0 40px 80px rgba(15,42,67,.35); }
 .ebene { position: absolute; inset: 0; border-radius: inherit; overflow: hidden; opacity: 0; transition: opacity .5s; pointer-events: none; }
 .ebene:not(.an) * { animation-play-state: paused !important; }
+.ablauf.ruht .handy * { animation-play-state: paused !important; }
 .ebene.an { opacity: 1; }
 .ebene .app { height: calc(100% / var(--s)); }
 /* Schritt 1: Anrufbildschirm */

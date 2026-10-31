@@ -36,6 +36,11 @@
     }, { rootMargin: schmal ? "-22% 0px -77% 0px" : "-48% 0px -51% 0px" });
     schritte.forEach(function (s) { sb.observe(s); });
   }
+  var ablauf = document.querySelector(".ablauf");
+  if (ablauf && "IntersectionObserver" in window) {
+    ablauf.classList.add("ruht");
+    new IntersectionObserver(function (e) { ablauf.classList.toggle("ruht", !e[0].isIntersecting); }).observe(ablauf);
+  }
 
   // Inhalte gleiten beim Scrollen sanft ins Bild
   if (!ruhig && "IntersectionObserver" in window) {
@@ -95,7 +100,13 @@
     return d;
   }
 
+  var obenSichtbar = true;
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(function (e) { obenSichtbar = e[0].isIntersecting; }).observe(liste);
+  }
+
   function runde() {
+    if (!obenSichtbar || document.hidden) return;
     var b = beispiele[n++ % beispiele.length];
     document.getElementById("mt-titel").textContent = (b[0] === "notfall" ? "NOTFALL: " : "Neuer Auftrag: ") + b[1];
     document.getElementById("mt-text").textContent = b[2];
