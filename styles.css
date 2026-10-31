@@ -234,6 +234,15 @@ h2 { font-size: clamp(26px, 4vw, 34px); line-height: 1.2; margin: 0 0 12px; lett
 /* Handy oben kippt mit der Maus */
 .start .handy { transform: perspective(1400px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) rotate(-2.5deg); transition: transform .25s ease-out; }
 
+/* Häufige Fragen */
+.faq { max-width: 760px; display: grid; gap: 10px; }
+.faq details { background: #fff; border: 1px solid var(--rand, #E3E8ED); border-radius: 14px; padding: 0 20px; }
+.faq summary { cursor: pointer; list-style: none; padding: 18px 32px 18px 0; font-weight: 700; font-size: 17px; position: relative; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; position: absolute; right: 0; top: 50%; transform: translateY(-50%); font-size: 24px; font-weight: 400; color: var(--orange); transition: transform .2s; }
+.faq details[open] summary::after { transform: translateY(-50%) rotate(45deg); }
+.faq details p { margin: 0 0 18px; color: var(--text-leise); line-height: 1.55; }
+
 /* Mobil: Zeitleiste */
 .zeitleiste { display: none; position: relative; padding-left: 48px; margin-top: 8px; }
 .zeitleiste::before { content: ""; position: absolute; left: 15px; top: 10px; bottom: 40px; width: 2px; border-radius: 2px; background: linear-gradient(var(--marine), var(--orange)); }
