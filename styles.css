@@ -102,7 +102,9 @@ h2 { font-size: clamp(26px, 4vw, 34px); line-height: 1.2; margin: 0 0 12px; lett
 
 /* Handy: Nachbau der Aufträge-App (Farben und Maße wie in der App, verkleinert) */
 .handy { --s: .69; position: relative; width: 290px; height: 590px; border-radius: 50px; border: 10px solid #0a1a2b; background: #0a1a2b; box-shadow: 0 0 0 2px #2b4a68, 0 40px 80px rgba(0,0,0,.45), 0 0 120px rgba(245,158,11,.10); transform: rotate(-2.5deg); }
-.bildschirm { position: relative; width: 100%; height: 100%; border-radius: 40px; overflow: hidden; background: #F4F6F8; }
+.bildschirm { position: relative; width: 100%; height: 100%; border-radius: 40px; overflow: hidden; background: #F4F6F8; isolation: isolate; -webkit-mask-image: -webkit-radial-gradient(white, black); }
+.story .bildschirm { background: #0a1a2b; }
+.story .e2 { background: #F4F6F8; }
 .app { width: 391px; transform: scale(var(--s)); transform-origin: 0 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; color: #1F3346; line-height: 1.3; }
 .insel { position: absolute; top: 9px; left: 50%; width: 84px; height: 24px; margin-left: -42px; border-radius: 99px; background: #000; z-index: 3; }
 .app-kopf { background: #0F2A43; padding: 0 20px 18px; }
@@ -177,9 +179,9 @@ h2 { font-size: clamp(26px, 4vw, 34px); line-height: 1.2; margin: 0 0 12px; lett
 .schritt p { margin: 0; color: var(--text-leise); font-size: 18px; }
 .ablauf-buehne { position: relative; }
 .ablauf-buehne .handy { position: sticky; top: calc(50vh - 295px); transform: none; box-shadow: 0 0 0 2px #2b4a68, 0 40px 80px rgba(15,42,67,.35); }
-.ebene { position: absolute; inset: 0; opacity: 0; transform: scale(.96); transition: opacity .5s, transform .6s cubic-bezier(.2,.8,.2,1); pointer-events: none; }
+.ebene { position: absolute; inset: 0; border-radius: inherit; overflow: hidden; opacity: 0; transition: opacity .5s; pointer-events: none; }
 .ebene:not(.an) * { animation-play-state: paused !important; }
-.ebene.an { opacity: 1; transform: none; }
+.ebene.an { opacity: 1; }
 .ebene .app { height: calc(100% / var(--s)); }
 /* Schritt 1: Anrufbildschirm */
 .anrufbild { display: flex; flex-direction: column; align-items: center; padding: 120px 30px 70px; background: radial-gradient(120% 70% at 50% 0%, #3b5a78 0%, #1a2f45 55%, #0b1724 100%); color: #fff; text-align: center; }
