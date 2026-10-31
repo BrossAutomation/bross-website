@@ -236,8 +236,9 @@ h2 { font-size: clamp(26px, 4vw, 34px); line-height: 1.2; margin: 0 0 12px; lett
   .ablauf-buehne .bildschirm { border-radius: 29px; }
   .ablauf-buehne .mitteilung { zoom: .64; top: 40px; }
   .ablauf-buehne .insel { width: 56px; height: 17px; margin-left: -28px; top: 7px; }
-  .schritt { min-height: 92vh; max-width: none; justify-content: flex-start; padding-top: 390px; }
-  .schritt:first-child { min-height: 0; padding: 24px 0 40vh; }
+  .schritt { min-height: 0; max-width: none; justify-content: flex-start; padding: 270px 0 6vh; }
+  .schritt:first-child { min-height: 0; padding: 24px 0 6vh; }
+  .schritt:last-child { padding-bottom: 32px; }
   .schritt h3 { font-size: 22px; }
   .schritt p { font-size: 16px; }
 }
