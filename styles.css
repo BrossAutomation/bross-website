@@ -229,22 +229,42 @@ h2 { font-size: clamp(26px, 4vw, 34px); line-height: 1.2; margin: 0 0 12px; lett
 /* Handy oben kippt mit der Maus */
 .start .handy { transform: perspective(1400px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) rotate(-2.5deg); transition: transform .25s ease-out; }
 
+/* Mobil: Zeitleiste */
+.zeitleiste { display: none; position: relative; padding-left: 48px; margin-top: 8px; }
+.zeitleiste::before { content: ""; position: absolute; left: 15px; top: 10px; bottom: 40px; width: 2px; border-radius: 2px; background: linear-gradient(var(--marine), var(--orange)); }
+.zl-schritt { position: relative; padding-bottom: 36px; }
+.zl-schritt:last-child { padding-bottom: 0; }
+.zl-schritt:last-child::after { content: ""; position: absolute; left: -36px; top: 34px; bottom: -48px; width: 8px; background: var(--hintergrund); }
+.zl-nr { position: absolute; left: -48px; top: 0; width: 32px; height: 32px; border-radius: 10px; background: var(--marine); color: #fff; font-weight: 800; font-size: 15px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 5px var(--hintergrund); }
+.zl-schritt:last-child .zl-nr { background: var(--orange); color: var(--marine); }
+.zl-schritt h3 { font-size: 21px; margin: 3px 0 6px; }
+.zl-schritt p { font-size: 16px; color: #4B5B6B; line-height: 1.5; margin: 0; }
+.zl-bild { margin-top: 16px; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 26px rgba(15,42,67,.14); }
+.zl-anruf { display: flex; align-items: center; gap: 12px; padding: 16px; color: #fff; background: radial-gradient(120% 140% at 50% 0%, #2c4a6b, #0c1c2e); }
+.zl-av { width: 42px; height: 42px; flex: none; border-radius: 50%; background: #3d5b7b; display: flex; align-items: center; justify-content: center; font-weight: 800; }
+.zl-anruf-text { flex: 1; min-width: 0; font-size: 13px; line-height: 1.35; }
+.zl-anruf-text b { display: block; font-size: 17px; font-weight: 600; }
+.zl-anruf-text span { color: #FDE7B0; }
+.zl-gruen { width: 42px; height: 42px; flex: none; border-radius: 50%; background: #65C466; display: flex; align-items: center; justify-content: center; }
+.zl-gruen svg { width: 20px; height: 20px; fill: #fff; }
+.zl-gespraech { display: flex; flex-direction: column; gap: 8px; padding: 16px; background: linear-gradient(#0F2A43, #13324f); color: #fff; }
+.zl-b { max-width: 82%; padding: 9px 13px; border-radius: 16px; font-size: 14px; line-height: 1.35; }
+.zl-b.k { align-self: flex-end; background: #fff; color: #111; border-bottom-right-radius: 5px; }
+.zl-b.ki { align-self: flex-start; background: #1E3D5C; border-bottom-left-radius: 5px; }
+.zl-auftrag { padding: 12px; background: #F4F6F8; display: flex; flex-direction: column; gap: 10px; }
+.zl-mitteilung { display: flex; gap: 10px; align-items: center; padding: 10px 12px; border-radius: 14px; background: #fff; box-shadow: 0 4px 14px rgba(0,0,0,.1); font-size: 13px; line-height: 1.35; color: #111; }
+.zl-mitteilung img { width: 32px; height: 32px; flex: none; border-radius: 8px; border: 1px solid #E3E8ED; }
+.zl-mitteilung b { display: block; }
+.zl-auftrag .ak { box-shadow: 0 0 0 2px rgba(245,158,11,.55); }
+.zl-auftrag .rr { min-height: 38px; padding: 0 12px; font-size: 14px; }
+.zl-auftrag .name { font-size: 17px; }
+
 @media (max-width: 860px) {
   .start-raster, .beispiel-raster, .varianten { grid-template-columns: 1fr; }
   .handy { --s: .64; width: 270px; height: 500px; transform: none; margin-top: 8px; }
   .start .handy { transform: none; }
-  .ablauf-raster { grid-template-columns: 1fr; gap: 0; }
-  .ablauf-buehne { order: -1; position: sticky; top: 60px; z-index: 2; height: 360px; display: flex; justify-content: center; }
-  .ablauf-buehne::before { content: ""; position: absolute; top: -48px; left: -20px; right: -20px; height: 430px; background: linear-gradient(var(--hintergrund) 88%, rgba(245,247,249,0)); }
-  .ablauf-buehne .handy { --s: .425; position: relative; top: 0; width: 180px; height: 350px; border-width: 7px; border-radius: 36px; }
-  .ablauf-buehne .bildschirm { border-radius: 29px; }
-  .ablauf-buehne .mitteilung { zoom: .64; top: 40px; }
-  .ablauf-buehne .insel { width: 56px; height: 17px; margin-left: -28px; top: 7px; }
-  .schritt { min-height: 0; max-width: none; justify-content: flex-start; padding: 270px 0 6vh; }
-  .schritt:first-child { min-height: 0; padding: 24px 0 6vh; }
-  .schritt:last-child { padding-bottom: 32px; }
-  .schritt h3 { font-size: 22px; }
-  .schritt p { font-size: 16px; }
+  .ablauf-raster { display: none; }
+  .zeitleiste { display: block; }
 }
 
 @media (prefers-reduced-motion: reduce) {

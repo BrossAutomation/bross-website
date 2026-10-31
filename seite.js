@@ -39,7 +39,7 @@
 
   // Inhalte gleiten beim Scrollen sanft ins Bild
   if (!ruhig && "IntersectionObserver" in window) {
-    var teile = document.querySelectorAll("section h2, section .unterzeile, .variante, .beispiel-raster > div, .liste li, .kontakt .knoepfe");
+    var teile = document.querySelectorAll("section h2, section .unterzeile, .variante, .beispiel-raster > div, .liste li, .kontakt .knoepfe, .zl-schritt");
     var eb = new IntersectionObserver(function (eintraege) {
       eintraege.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("da"); eb.unobserve(e.target); } });
     }, { rootMargin: "0px 0px -8% 0px" });
